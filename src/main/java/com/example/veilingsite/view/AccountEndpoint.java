@@ -12,22 +12,38 @@ public class AccountEndpoint {
     @Autowired
     AccountService as;
 
+// CREATE - nieuwe account aanmaken
+    @PostMapping("maak-account")
+    public Account maakAccount(@RequestBody Account a) {
+        System.out.println(a.getNaam() + " account gemaakt");
+        return as.createAccount(a);
+    }
+
+// READ - alle accounts / account by id
+    @GetMapping("/alle-accounts")
+    public Iterable<Account> alleAccounts() {
+        System.out.println("Alle accounts");
+        return as.getAccounts();
+    }
+
     @GetMapping("/account/{id}")
     public Account zoekAccount(@PathVariable("id") long id) {
-        System.out.println("Hij doet het");
+        System.out.println("Account gevonden");
         return as.getAccount(id);
     }
 
-    @GetMapping("/alle-accounts")
-    public String getAccounts() {
-        System.out.println("Hij doet het");
-        return "hi";
+// UPDATE
+    @PutMapping("/account/{id}")
+    public Account editAccount(@PathVariable("id") long id, @RequestBody Account a) {
+        System.out.println("Account bijgewerkt");
+        return as.updateAccount(id, a);
     }
 
-    @PostMapping("maak-account")
-    public Account maakAccount(@RequestBody Account a) {
-        System.out.println(a.getNaam());
-        return as.createAccount(a);
-
+// DELETE
+    @DeleteMapping("/account/{id}")
+    public void verwijderAccount(@PathVariable("id") long id) {
+        Account account = as.getAccount(id);
+        as.deleteAccount(id);
+        System.out.println(account.getNaam() + " verwijderd.");
     }
 }
