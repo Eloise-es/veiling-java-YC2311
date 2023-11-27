@@ -28,12 +28,12 @@ public class AccountService {
         if (ar.findById(id).isEmpty()) return null;
         Account account = ar.findById(id).get();
 
-        account.setEmail(updatedAccount.getEmail());
-        account.setPassword(updatedAccount.getPassword());
-        account.setNaam(updatedAccount.getNaam());
-        account.setTelefoonNummer(updatedAccount.getTelefoonNummer());
-        account.setPlaats(updatedAccount.getPlaats());
-        account.setPostcode(updatedAccount.getPostcode());
+        if (updatedAccount.getEmail() != null) account.setEmail(updatedAccount.getEmail());
+        if (updatedAccount.getPassword() != null) account.setPassword(updatedAccount.getPassword());
+        if (updatedAccount.getNaam() != null) account.setNaam(updatedAccount.getNaam());
+        if (updatedAccount.getTelefoon() != null) account.setTelefoon(updatedAccount.getTelefoon());
+        if (updatedAccount.getPlaats() != null) account.setPlaats(updatedAccount.getPlaats());
+        if (updatedAccount.getPostcode() != null) account.setPostcode(updatedAccount.getPostcode());
 
         ar.save(account);
         return account;
