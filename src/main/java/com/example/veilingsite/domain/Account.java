@@ -1,11 +1,6 @@
 package com.example.veilingsite.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
 @Entity
 public class Account {
@@ -16,7 +11,7 @@ public class Account {
         String email;
         String password;
         String naam;
-        String telefoonNummer;
+        String telefoon;
         String plaats;
         String postcode;
 //        LocalDate aanmaakDatum;
@@ -53,12 +48,12 @@ public class Account {
                 this.naam = naam;
         }
 
-        public String getTelefoonNummer() {
-                return telefoonNummer;
+        public String getTelefoon() {
+                return telefoon;
         }
 
-        public void setTelefoonNummer(String telefoonNummer) {
-                this.telefoonNummer = telefoonNummer;
+        public void setTelefoon(String telefoon) {
+                this.telefoon = telefoon;
         }
 
         public String getPlaats() {

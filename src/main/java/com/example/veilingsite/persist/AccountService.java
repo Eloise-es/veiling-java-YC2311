@@ -1,6 +1,8 @@
 package com.example.veilingsite.persist;
 
 import com.example.veilingsite.domain.Account;
+import com.example.veilingsite.domain.Bieder;
+import com.example.veilingsite.domain.Veilingstuk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,10 @@ public class AccountService {
     @Autowired
     AccountRepository ar;
 
+    @Autowired
+    ItemRepository ir;
+
+    // Account
     public Account createAccount(Account account) {
         ar.save(account);
         return account;
@@ -28,12 +34,12 @@ public class AccountService {
         if (ar.findById(id).isEmpty()) return null;
         Account account = ar.findById(id).get();
 
-        account.setEmail(updatedAccount.getEmail());
-        account.setPassword(updatedAccount.getPassword());
-        account.setNaam(updatedAccount.getNaam());
-        account.setTelefoonNummer(updatedAccount.getTelefoonNummer());
-        account.setPlaats(updatedAccount.getPlaats());
-        account.setPostcode(updatedAccount.getPostcode());
+        if (updatedAccount.getEmail() != null) account.setEmail(updatedAccount.getEmail());
+        if (updatedAccount.getPassword() != null) account.setPassword(updatedAccount.getPassword());
+        if (updatedAccount.getNaam() != null) account.setNaam(updatedAccount.getNaam());
+        if (updatedAccount.getTelefoon() != null) account.setTelefoon(updatedAccount.getTelefoon());
+        if (updatedAccount.getPlaats() != null) account.setPlaats(updatedAccount.getPlaats());
+        if (updatedAccount.getPostcode() != null) account.setPostcode(updatedAccount.getPostcode());
 
         ar.save(account);
         return account;
@@ -42,4 +48,10 @@ public class AccountService {
     public void deleteAccount(long id) {
         ar.deleteById(id);
     }
+
+    // ******* Bieder ********
+    public void createBiederAccount(Bieder b) {
+        ar.save(b);
+    }
+
 }
