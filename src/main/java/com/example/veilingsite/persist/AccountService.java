@@ -1,6 +1,8 @@
 package com.example.veilingsite.persist;
 
 import com.example.veilingsite.domain.Account;
+import com.example.veilingsite.domain.Bieder;
+import com.example.veilingsite.domain.Veilingstuk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,10 @@ public class AccountService {
     @Autowired
     AccountRepository ar;
 
+    @Autowired
+    ItemRepository ir;
+
+    // Account
     public Account createAccount(Account account) {
         ar.save(account);
         return account;
@@ -42,4 +48,10 @@ public class AccountService {
     public void deleteAccount(long id) {
         ar.deleteById(id);
     }
+
+    // ******* Bieder ********
+    public void createBiederAccount(Bieder b) {
+        ar.save(b);
+    }
+
 }
