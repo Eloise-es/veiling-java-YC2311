@@ -2,12 +2,16 @@ package com.example.veilingsite.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Account {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         long id;
 
+        @ManyToMany
+        List<Veilingstuk> favorieten;
         String email;
         String password;
         String naam;
@@ -15,6 +19,15 @@ public class Account {
         String plaats;
         String postcode;
 //        LocalDate aanmaakDatum;
+
+
+        public List<Veilingstuk> getFavorieten() {
+                return favorieten;
+        }
+
+        public void setFavorieten(List<Veilingstuk> favorieten) {
+                this.favorieten = favorieten;
+        }
 
         public long getId() {
                 return id;

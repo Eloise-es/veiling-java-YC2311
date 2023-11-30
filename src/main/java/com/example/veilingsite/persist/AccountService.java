@@ -31,8 +31,9 @@ public class AccountService {
 
     // UPDATE
     public Account updateAccount(long id, Account updatedAccount) {
-        if (ar.findById(id).isEmpty()) return null;
-        Account account = ar.findById(id).get();
+        Optional<Account> optionalAccount = ar.findById(id);
+        if (optionalAccount.isEmpty()) return null;
+        Account account = optionalAccount.get();
 
         if (updatedAccount.getEmail() != null) account.setEmail(updatedAccount.getEmail());
         if (updatedAccount.getPassword() != null) account.setPassword(updatedAccount.getPassword());
