@@ -3,6 +3,7 @@ package com.example.veilingsite.view;
 import com.example.veilingsite.domain.Account;
 import com.example.veilingsite.persist.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
@@ -45,5 +46,15 @@ public class AccountEndpoint {
         Account account = as.getAccount(id);
         as.deleteAccount(id);
         System.out.println(account.getNaam() + " verwijderd.");
+    }
+
+    // favoriet toevoegen
+
+    @PostMapping("/account/{id}/favoriet/{itemID}")
+    public ResponseEntity<String> voegFavorietToe(
+            @PathVariable long id,
+            @PathVariable long itemID) {
+        // as.addFavourite(id, itemID); --> link item and bidder in table
+        return ResponseEntity.ok("Favoriet toegevoegd.");
     }
 }
