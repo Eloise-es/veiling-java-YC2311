@@ -42,10 +42,10 @@ public class AccountEndpoint {
 
 // DELETE
     @DeleteMapping("/account/{id}")
-    public void verwijderAccount(@PathVariable("id") long id) {
-        Account account = as.getAccount(id);
-        as.deleteAccount(id);
+    public Account verwijderAccount(@PathVariable("id") long id) {
+        Account account = as.deleteAccount(id);
         System.out.println(account.getNaam() + " verwijderd.");
+        return account;
     }
 
     // favoriet toevoegen

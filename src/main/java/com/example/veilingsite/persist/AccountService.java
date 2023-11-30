@@ -46,8 +46,10 @@ public class AccountService {
     }
 
     // DELETE
-    public void deleteAccount(long id) {
+    public Account deleteAccount(long id) {
+        Account a = ar.findById(id).get();
         ar.deleteById(id);
+        return a;
     }
 
 }
