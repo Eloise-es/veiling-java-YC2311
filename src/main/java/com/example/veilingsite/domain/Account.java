@@ -1,7 +1,9 @@
 package com.example.veilingsite.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,14 +14,16 @@ public class Account {
 
         @ManyToMany
         List<Veilingstuk> favorieten;
+
+        @OneToMany(mappedBy = "aanbieder")
+        List<Veilingstuk> aangeboden = new ArrayList<Veilingstuk>();
+
         String email;
         String password;
         String naam;
         String telefoon;
         String plaats;
         String postcode;
-//        LocalDate aanmaakDatum;
-
 
         public List<Veilingstuk> getFavorieten() {
                 return favorieten;
@@ -27,6 +31,15 @@ public class Account {
 
         public void setFavorieten(List<Veilingstuk> favorieten) {
                 this.favorieten = favorieten;
+        }
+
+        @JsonManagedReference
+        public List<Veilingstuk> getAangeboden() {
+                return aangeboden;
+        }
+
+        public void setAangeboden(List<Veilingstuk> aangeboden) {
+                this.aangeboden = aangeboden;
         }
 
         public long getId() {

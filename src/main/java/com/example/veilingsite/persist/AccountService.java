@@ -11,9 +11,6 @@ public class AccountService {
     @Autowired
     AccountRepository ar;
 
-    @Autowired
-    ItemRepository ir;
-
     // CREATE
     public Account createAccount(Account account) {
         ar.save(account);

@@ -1,22 +1,26 @@
 package com.example.veilingsite.persist;
 
+import com.example.veilingsite.domain.Account;
 import com.example.veilingsite.domain.Veilingstuk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.veilingsite.domain.Account;
 
 @Service
-public class FavorietService {
+public class AanbiedingService {
+
     @Autowired
     AccountRepository ar;
 
     @Autowired
     ItemRepository ir;
 
-    public void addFavourite(long accID, long itemID) {
+
+    public Veilingstuk createVeilingstuk(Veilingstuk veilingstuk, long accID) {
         Account a = ar.findById(accID).get();
-        Veilingstuk v = ir.findById(itemID).get();
-        a.getFavorieten().add(v);
+        ir.save(veilingstuk);
+        a.getAangeboden().add(veilingstuk);
+        veilingstuk.setAanbieder(a);
         ar.save(a);
+        return veilingstuk;
     }
 }
