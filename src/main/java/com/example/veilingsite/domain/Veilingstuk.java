@@ -11,9 +11,6 @@ public class Veilingstuk {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @ManyToMany
-    List<Bieder> aanFavorietenToegevoegd;
-
     String naam;
     String categorie;
     LocalDate productieDatum;
@@ -29,14 +26,6 @@ public class Veilingstuk {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public List<Bieder> getAanFavorietenToegevoegd() {
-        return aanFavorietenToegevoegd;
-    }
-
-    public void setAanFavorietenToegevoegd(List<Bieder> aanFavorietenToegevoegd) {
-        this.aanFavorietenToegevoegd = aanFavorietenToegevoegd;
     }
 
     public String getNaam() {
