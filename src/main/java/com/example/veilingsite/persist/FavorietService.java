@@ -19,4 +19,11 @@ public class FavorietService {
         a.getFavorieten().add(v);
         ar.save(a);
     }
+
+    public void removeFavourite(long accID, long itemID) {
+        Account a = ar.findById(accID).get();
+        Veilingstuk v = ir.findById(itemID).get();
+        a.getFavorieten().remove(v);
+        ar.save(a);
+    }
 }
