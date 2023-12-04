@@ -1,5 +1,6 @@
 package com.example.veilingsite.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -11,6 +12,10 @@ public class Veilingstuk {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account aanbieder;
+
     String naam;
     String categorie;
     LocalDate productieDatum;
@@ -19,6 +24,15 @@ public class Veilingstuk {
     int breedte;
     int lengte;
     int hoogte;
+
+    @JsonBackReference
+    public Account getAanbieder() {
+        return aanbieder;
+    }
+
+    public void setAanbieder(Account aanbieder) {
+        this.aanbieder = aanbieder;
+    }
 
     public long getId() {
         return id;
