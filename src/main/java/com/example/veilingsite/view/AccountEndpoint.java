@@ -43,18 +43,7 @@ public class AccountEndpoint {
 // DELETE
     @DeleteMapping("/account/{id}")
     public void verwijderAccount(@PathVariable("id") long id) {
-        Account account = as.getAccount(id);
-        as.deleteAccount(id);
+        Account account = as.deleteAccount(id);
         System.out.println(account.getNaam() + " verwijderd.");
-    }
-
-    // favoriet toevoegen
-
-    @PostMapping("/account/{id}/favoriet/{itemID}")
-    public ResponseEntity<String> voegFavorietToe(
-            @PathVariable long id,
-            @PathVariable long itemID) {
-        // as.addFavourite(id, itemID); --> link item and bidder in table
-        return ResponseEntity.ok("Favoriet toegevoegd.");
     }
 }

@@ -11,15 +11,13 @@ public class AccountService {
     @Autowired
     AccountRepository ar;
 
-    @Autowired
-    ItemRepository ir;
-
-    // Account
+    // CREATE
     public Account createAccount(Account account) {
         ar.save(account);
         return account;
     }
 
+    // READ
     public Iterable<Account> getAccounts() {
         return ar.findAll();
     }
@@ -28,9 +26,11 @@ public class AccountService {
         return account.orElse(null);
     }
 
+    // UPDATE
     public Account updateAccount(long id, Account updatedAccount) {
-        if (ar.findById(id).isEmpty()) return null;
-        Account account = ar.findById(id).get();
+        Optional<Account> optionalAccount = ar.findById(id);
+        if (optionalAccount.isEmpty()) return null;
+        Account account = optionalAccount.get();
 
         if (updatedAccount.getEmail() != null) account.setEmail(updatedAccount.getEmail());
         if (updatedAccount.getPassword() != null) account.setPassword(updatedAccount.getPassword());
@@ -43,8 +43,11 @@ public class AccountService {
         return account;
     }
 
-    public void deleteAccount(long id) {
+    // DELETE
+    public Account deleteAccount(long id) {
+        Account a = ar.findById(id).get();
         ar.deleteById(id);
+        return a;
     }
 
 }
