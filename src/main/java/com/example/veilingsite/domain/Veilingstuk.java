@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 public class Veilingstuk {
@@ -20,19 +19,28 @@ public class Veilingstuk {
     String categorie;
     LocalDate productieDatum;
     String beschrijving;
-    int gewicht;
-    int breedte;
-    int lengte;
-    int hoogte;
+    double gewicht;
+    double breedte;
+    double lengte;
+    double hoogte;
 
     @JsonBackReference
     public Account getAanbieder() {
         return aanbieder;
     }
 
-    public void setAanbieder(Account aanbieder) {
-        this.aanbieder = aanbieder;
+    public Veilingstuk(String naam, String categorie, LocalDate productieDatum, String beschrijving, double gewicht, double breedte, double lengte, double hoogte) {
+        this.naam = naam;
+        this.categorie = categorie;
+        this.productieDatum = productieDatum;
+        this.beschrijving = beschrijving;
+        this.gewicht = gewicht;
+        this.breedte = breedte;
+        this.lengte = lengte;
+        this.hoogte = hoogte;
     }
+
+    public Veilingstuk() {}
 
     public long getId() {
         return id;
@@ -40,6 +48,10 @@ public class Veilingstuk {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setAanbieder(Account aanbieder) {
+        this.aanbieder = aanbieder;
     }
 
     public String getNaam() {
@@ -74,35 +86,35 @@ public class Veilingstuk {
         this.beschrijving = beschrijving;
     }
 
-    public int getGewicht() {
+    public double getGewicht() {
         return gewicht;
     }
 
-    public void setGewicht(int gewicht) {
+    public void setGewicht(double gewicht) {
         this.gewicht = gewicht;
     }
 
-    public int getBreedte() {
+    public double getBreedte() {
         return breedte;
     }
 
-    public void setBreedte(int breedte) {
+    public void setBreedte(double breedte) {
         this.breedte = breedte;
     }
 
-    public int getLengte() {
+    public double getLengte() {
         return lengte;
     }
 
-    public void setLengte(int lengte) {
+    public void setLengte(double lengte) {
         this.lengte = lengte;
     }
 
-    public int getHoogte() {
+    public double getHoogte() {
         return hoogte;
     }
 
-    public void setHoogte(int hoogte) {
+    public void setHoogte(double hoogte) {
         this.hoogte = hoogte;
     }
 }
