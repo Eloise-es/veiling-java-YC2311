@@ -33,6 +33,18 @@ public class Account {
                 this.favorieten = favorieten;
         }
 
+        public Account(String email, String password, String naam, String telefoon, String plaats, String postcode) {
+                this.email = email;
+                this.password = password;
+                this.naam = naam;
+                this.telefoon = telefoon;
+                this.plaats = plaats;
+                this.postcode = postcode;
+        }
+
+        public Account() {
+        }
+
         @JsonManagedReference
         public List<Veilingstuk> getAangeboden() {
                 return aangeboden;
