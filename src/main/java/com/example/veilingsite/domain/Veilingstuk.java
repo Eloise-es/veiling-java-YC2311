@@ -2,6 +2,7 @@ package com.example.veilingsite.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -34,6 +35,13 @@ public class Veilingstuk {
     public Account getAanbieder() {
         return aanbieder;
     }
+
+
+    @JsonProperty("aanbieder_id")
+    public Long getAanbiederId() { return aanbieder != null ? aanbieder.getId() : null;  }
+
+    @JsonProperty("aanbieder_naam")
+    public String getAanbiederNaam() { return aanbieder != null ? aanbieder.getNaam() : null;}
 
     public Veilingstuk(String naam, String categorie, LocalDate productieDatum, String beschrijving, double gewicht, double breedte, double lengte, double hoogte) {
         this.naam = naam;
