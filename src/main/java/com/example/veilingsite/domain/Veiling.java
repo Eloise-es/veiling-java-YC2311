@@ -1,6 +1,7 @@
 package com.example.veilingsite.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -26,6 +27,9 @@ public class Veiling {
     int openingsBodInEuros;
     int laatsteBodInEuros;
     int minimumBodInEuros;
+
+    @JsonProperty("veilingstuk_id")
+    public Long getVeilingstukId() { return veilingstuk != null ? veilingstuk.getId() : null;  }
 
     public Veiling(LocalDateTime startDatum, int duratieInSeconden, int openingsBodInEuros, int laatsteBodInEuros, int minimumBodInEuros) {
         this.startDatum = startDatum;

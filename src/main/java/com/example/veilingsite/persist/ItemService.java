@@ -51,7 +51,8 @@ public class ItemService {
         // set id to match destination
         updatedVeilingstuk.setId(id);
         // copy properties over
-        BeanUtils.copyProperties(updatedVeilingstuk, destination);
+        String[] ignoreProperties = {"aanbieder"};
+        BeanUtils.copyProperties(updatedVeilingstuk, destination, ignoreProperties);
         // save to db
         ir.save(destination);
         return destination;
