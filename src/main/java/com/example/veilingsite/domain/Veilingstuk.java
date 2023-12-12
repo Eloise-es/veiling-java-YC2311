@@ -1,9 +1,12 @@
 package com.example.veilingsite.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Veilingstuk {
@@ -14,6 +17,9 @@ public class Veilingstuk {
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account aanbieder;
+
+    @OneToMany(mappedBy = "veilingstuk")
+    List<Veiling> veilingen = new ArrayList<Veiling>();
 
     String naam;
     String categorie;
@@ -41,6 +47,15 @@ public class Veilingstuk {
     }
 
     public Veilingstuk() {}
+
+    @JsonManagedReference
+    public List<Veiling> getVeilingen() {
+        return veilingen;
+    }
+
+    public void setVeilingen(List<Veiling> veilingen) {
+        this.veilingen = veilingen;
+    }
 
     public long getId() {
         return id;
