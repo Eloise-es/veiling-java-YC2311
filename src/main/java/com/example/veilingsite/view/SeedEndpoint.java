@@ -1,12 +1,10 @@
 package com.example.veilingsite.view;
 
 import com.example.veilingsite.domain.Account;
+import com.example.veilingsite.domain.Foto;
 import com.example.veilingsite.domain.Veiling;
 import com.example.veilingsite.domain.Veilingstuk;
-import com.example.veilingsite.persist.AanbiedingService;
-import com.example.veilingsite.persist.AccountRepository;
-import com.example.veilingsite.persist.ItemService;
-import com.example.veilingsite.persist.VeilingService;
+import com.example.veilingsite.persist.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,13 +20,13 @@ public class SeedEndpoint {
     AanbiedingService abs;
 
     @Autowired
-    ItemService is;
-
-    @Autowired
     AccountRepository ar;
 
     @Autowired
     VeilingService vs;
+
+    @Autowired
+    FotoService fs;
 
     // SEED DATABASE
     @PostMapping("seed")
@@ -145,6 +143,7 @@ public class SeedEndpoint {
         for (Veilingstuk veilingstuk : veilingstukken) {
             Veilingstuk item = abs.createVeilingstuk(veilingstuk, (long) (Math.random()*25)+1);
             vs.createVeiling(item.getId(), veilingen.get(i));
+            fs.saveFoto(item.getId(), "http://res.cloudinary.com/dzqkr91yz/image/upload/v1702896879/veilingsite/nt3oajkfrlb27remfkqa.png");
             i++;
         }
 

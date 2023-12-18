@@ -22,6 +22,9 @@ public class Veilingstuk {
     @OneToMany(mappedBy = "veilingstuk")
     List<Veiling> veilingen = new ArrayList<Veiling>();
 
+    @OneToMany(mappedBy = "veilingstuk")
+    List<Foto> fotos = new ArrayList<Foto>();
+
     String naam;
     String categorie;
     LocalDate productieDatum;
@@ -36,12 +39,12 @@ public class Veilingstuk {
         return aanbieder;
     }
 
-
     @JsonProperty("aanbieder_id")
     public Long getAanbiederId() { return aanbieder != null ? aanbieder.getId() : null;  }
 
     @JsonProperty("aanbieder_naam")
     public String getAanbiederNaam() { return aanbieder != null ? aanbieder.getNaam() : null;}
+
 
     public Veilingstuk(String naam, String categorie, LocalDate productieDatum, String beschrijving, double gewicht, double breedte, double lengte, double hoogte) {
         this.naam = naam;
@@ -55,6 +58,15 @@ public class Veilingstuk {
     }
 
     public Veilingstuk() {}
+
+    @JsonProperty("fotos")
+    public List<Foto> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<Foto> fotos) {
+        this.fotos = fotos;
+    }
 
     @JsonManagedReference
     public List<Veiling> getVeilingen() {

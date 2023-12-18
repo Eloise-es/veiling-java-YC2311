@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Veiling {
@@ -16,6 +17,7 @@ public class Veiling {
     @ManyToOne
     @JoinColumn(name = "veilingstuk_id")
     private Veilingstuk veilingstuk;
+
 
     LocalDateTime startDatum;
     int duratieInSeconden;

@@ -11,6 +11,4 @@ public interface ItemRepository extends CrudRepository<Veilingstuk, Long> {
     Iterable<Veilingstuk> findByCategorie(String categorie);
     Iterable<Veilingstuk> findByNaamContaining(String naam);
 
-    @EntityGraph(attributePaths = "aanbieder") // Specificeer welk attribuut moet worden opgehaald
-    Optional<Veilingstuk> findById(Long id);
 }
