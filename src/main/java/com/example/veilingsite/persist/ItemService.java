@@ -38,6 +38,7 @@ public class ItemService {
     }
 
     public Iterable<Veilingstuk> filterVeilingstukkenByCategorie(String categorie) {
+        if ("all".equals(categorie)) {return ir.findAll();};
         return ir.findByCategorie(categorie);}
 
     public Iterable<Veilingstuk> filterVeilingstukkenByNaam(String naam) {

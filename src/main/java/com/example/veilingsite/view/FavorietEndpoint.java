@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FavorietEndpoint {
-    @Autowired
-    FavorietService fs;
+    private final FavorietService fs;
+
+    public FavorietEndpoint(FavorietService fs) {
+        this.fs = fs;
+    }
 
     // favoriet toevoegen
     @GetMapping("account/{accID}/veilingstuk/{itemID}")
