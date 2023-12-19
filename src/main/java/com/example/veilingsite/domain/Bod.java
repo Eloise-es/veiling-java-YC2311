@@ -1,5 +1,6 @@
 package com.example.veilingsite.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +11,7 @@ public class Bod {
 
     @ManyToOne
     @JoinColumn(name = "veiling_id")
+    @JsonIgnore
     Veiling veiling;
 
     int prijsInEuro;

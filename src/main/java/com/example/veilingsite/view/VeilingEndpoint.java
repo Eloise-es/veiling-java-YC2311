@@ -14,11 +14,10 @@ public class VeilingEndpoint {
     // CREATE
     @PostMapping("veilingstuk/{id}/veiling")
     public Veiling maakVeiling(@PathVariable("id") long itemID, @RequestBody Veiling veiling) {
-        System.out.println("veiling aan het maken");
+        System.out.println("veiling aan het maken: " + veiling.getStartDatum());
         return vs.createVeiling(itemID, veiling);
     }
 
-    // READ
     // READ by id
     @GetMapping("veiling/{id}")
     public Veiling getVeiling(@PathVariable("id") long veilingID) {

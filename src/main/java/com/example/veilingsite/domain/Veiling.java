@@ -1,6 +1,7 @@
 package com.example.veilingsite.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -17,7 +18,7 @@ public class Veiling {
     @JoinColumn(name = "veilingstuk_id")
     private Veilingstuk veilingstuk;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiling", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiling")
     private List<Bod> biedingen;
 
     LocalDateTime startDatum;
@@ -52,6 +53,15 @@ public class Veiling {
 
     public void setVeilingstuk(Veilingstuk veilingstuk) {
         this.veilingstuk = veilingstuk;
+    }
+
+    @JsonManagedReference
+    public List<Bod> getBiedingen() {
+        return biedingen;
+    }
+
+    public void setBiedingen(List<Bod> biedingen) {
+        this.biedingen = biedingen;
     }
 
     public long getId() {
