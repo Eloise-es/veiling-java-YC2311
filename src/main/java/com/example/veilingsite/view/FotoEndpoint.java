@@ -1,5 +1,6 @@
 package com.example.veilingsite.view;
 
+import com.example.veilingsite.domain.Foto;
 import com.example.veilingsite.persist.CloudinaryService;
 import com.example.veilingsite.persist.FotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-public class ImageEndpoint {
+public class FotoEndpoint {
 
     @Autowired
     private CloudinaryService cloudinaryService;
@@ -17,10 +18,16 @@ public class ImageEndpoint {
     FotoService fs;
 
     @PostMapping("/veilingstuk/{id}/upload")
-    public ResponseEntity<String> uploadImage(@PathVariable("id") long itemID, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadImageWithItemID(@PathVariable("id") long itemID, @RequestParam("file") MultipartFile file) {
         String imageUrl = cloudinaryService.uploadFile(file);
         fs.saveFoto(itemID, imageUrl);
         return ResponseEntity.ok(imageUrl);
+    }
+
+    @PostMapping("/upload")
+    public Foto uploadImage(@RequestParam("file") MultipartFile file) {
+        String imageUrl = cloudinaryService.uploadFile(file);
+        return fs.saveFoto(imageUrl);
     }
 
     @DeleteMapping("/foto/{id}")

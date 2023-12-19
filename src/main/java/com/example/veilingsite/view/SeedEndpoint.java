@@ -1,11 +1,14 @@
 package com.example.veilingsite.view;
 
 import com.example.veilingsite.domain.Account;
-import com.example.veilingsite.domain.Foto;
 import com.example.veilingsite.domain.Veiling;
 import com.example.veilingsite.domain.Veilingstuk;
-import com.example.veilingsite.persist.*;
+import com.example.veilingsite.persist.AanbiedingService;
+import com.example.veilingsite.persist.AccountRepository;
+import com.example.veilingsite.persist.FotoService;
+import com.example.veilingsite.persist.VeilingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +33,7 @@ public class SeedEndpoint {
 
     // SEED DATABASE
     @PostMapping("seed")
-    public void seedDatabase() {
+    public ResponseEntity<String> seedDatabase() throws Exception {
         List<Account> accounts = new ArrayList<>();
         List<Veilingstuk> veilingstukken = new ArrayList<>();
         List<Veiling> veilingen = new ArrayList<>();
@@ -146,6 +149,6 @@ public class SeedEndpoint {
             fs.saveFoto(item.getId(), "http://res.cloudinary.com/dzqkr91yz/image/upload/v1702896879/veilingsite/nt3oajkfrlb27remfkqa.png");
             i++;
         }
-
+       return ResponseEntity.ok("Database seeded.");
     }
 }
