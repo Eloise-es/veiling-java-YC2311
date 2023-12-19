@@ -12,7 +12,7 @@ public class ItemEndpoint {
     ItemService is;
 
     // CREATE
-    @PostMapping("maak-veilingstuk")
+    @PostMapping("veilingstuk")
     public Veilingstuk maakVeilingstuk(@RequestBody Veilingstuk v) {
         System.out.println(v.getNaam() + " veilingstuk gemaakt.");
         return is.createVeilingstuk(v);

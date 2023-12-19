@@ -19,6 +19,7 @@ public class ItemService {
     @Autowired
     ItemRepository ir;
 
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -128,5 +129,6 @@ public class ItemService {
 
         return entityManager.createQuery(query).getResultList();
     }
+
 
 }
