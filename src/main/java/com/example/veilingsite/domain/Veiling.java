@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,6 +17,8 @@ public class Veiling {
     @JoinColumn(name = "veilingstuk_id")
     private Veilingstuk veilingstuk;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiling", cascade = CascadeType.ALL)
+    private List<Bod> biedingen;
 
     LocalDateTime startDatum;
     int duratieInSeconden;
