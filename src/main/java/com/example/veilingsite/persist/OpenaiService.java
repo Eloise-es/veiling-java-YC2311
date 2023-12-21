@@ -29,7 +29,7 @@ public class OpenaiService {
     public String maakAltText(String imageUrl) throws Exception {
         JSONArray messages = new JSONArray()
                 .put(new JSONObject().put("role", "user").put("content", new JSONArray()
-                        .put(new JSONObject().put("type", "text").put("text", "Write alternative text for this image, to use on a website."))
+                        .put(new JSONObject().put("type", "text").put("text", "Schrijf alternatieve tekst voor deze afbeelding om te gebruiken op een website. Schrijf slechts één zin, zonder aanhalingstekens."))
                         .put(new JSONObject().put("type", "image_url").put("image_url", new JSONObject().put("url", imageUrl)))));
 
         JSONObject requestBody = new JSONObject();

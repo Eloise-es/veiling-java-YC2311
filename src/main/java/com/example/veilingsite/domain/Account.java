@@ -18,6 +18,9 @@ public class Account {
         @OneToMany(mappedBy = "aanbieder")
         List<Veilingstuk> aangeboden = new ArrayList<Veilingstuk>();
 
+        @OneToMany(mappedBy = "bieder")
+        List<Bod> biedingen = new ArrayList<Bod>();
+
         String email;
         String password;
         String naam;
@@ -52,6 +55,12 @@ public class Account {
 
         public void setAangeboden(List<Veilingstuk> aangeboden) {
                 this.aangeboden = aangeboden;
+        }
+
+        public List<Bod> getBiedingen() {return biedingen;}
+
+        public void setBiedingen(List<Bod> biedingen) {
+                this.biedingen = biedingen;
         }
 
         public long getId() {

@@ -1,6 +1,7 @@
 package com.example.veilingsite.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -18,7 +19,10 @@ public class Veiling {
     @JoinColumn(name = "veilingstuk_id")
     private Veilingstuk veilingstuk;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiling")
+    private List<Bod> biedingen = new ArrayList<Bod>();
 
+    final static int STEP = 2;
     LocalDateTime startDatum;
     int duratieInSeconden;
     public enum VeilingStatus {
@@ -26,19 +30,18 @@ public class Veiling {
         OPEN,
         CLOSED
     }
-    int openingsBodInEuros;
-    int laatsteBodInEuros;
-    int minimumBodInEuros;
+    int openingsBodInEuro;
+    int laatsteBodInEuro;
+    int minimumBodInEuro;
 
     @JsonProperty("veilingstuk_id")
     public Long getVeilingstukId() { return veilingstuk != null ? veilingstuk.getId() : null;  }
 
-    public Veiling(LocalDateTime startDatum, int duratieInSeconden, int openingsBodInEuros, int laatsteBodInEuros, int minimumBodInEuros) {
+    public Veiling(LocalDateTime startDatum, int duratieInSeconden, int openingsBodInEuro) {
         this.startDatum = startDatum;
         this.duratieInSeconden = duratieInSeconden;
-        this.openingsBodInEuros = openingsBodInEuros;
-        this.laatsteBodInEuros = laatsteBodInEuros;
-        this.minimumBodInEuros = minimumBodInEuros;
+        this.openingsBodInEuro = openingsBodInEuro;
+        this.minimumBodInEuro = openingsBodInEuro + STEP;
     }
 
     public Veiling() {
@@ -53,6 +56,15 @@ public class Veiling {
         this.veilingstuk = veilingstuk;
     }
 
+    @JsonManagedReference
+    public List<Bod> getBiedingen() {
+        return biedingen;
+    }
+
+    public void setBiedingen(List<Bod> biedingen) {
+        this.biedingen = biedingen;
+    }
+
     public long getId() {
         return id;
     }
@@ -61,7 +73,6 @@ public class Veiling {
         this.id = id;
     }
 
-    // Getter + Setter voor veilingStatus
     private VeilingStatus veilingStatus;
 
     public VeilingStatus getVeilingStatus() {
@@ -88,27 +99,32 @@ public class Veiling {
         this.duratieInSeconden = duratieInSeconden;
     }
 
-    public int getOpeningsBodInEuros() {
-        return openingsBodInEuros;
+    public int getOpeningsBodInEuro() {
+        return openingsBodInEuro;
     }
 
-    public void setOpeningsBodInEuros(int openingsBodInEuros) {
-        this.openingsBodInEuros = openingsBodInEuros;
+    public void setOpeningsBodInEuro(int openingsBodInEuro) {
+        this.openingsBodInEuro = openingsBodInEuro;
     }
 
-    public int getLaatsteBodInEuros() {
-        return laatsteBodInEuros;
+    public int getLaatsteBodInEuro() {
+        return laatsteBodInEuro;
     }
 
-    public void setLaatsteBodInEuros(int laatsteBodInEuros) {
-        this.laatsteBodInEuros = laatsteBodInEuros;
+    public void setLaatsteBodInEuro(int laatsteBodInEuro) throws IllegalArgumentException {
+
+        if (laatsteBodInEuro >= minimumBodInEuro) {
+            this.laatsteBodInEuro = laatsteBodInEuro;
+            this.minimumBodInEuro = laatsteBodInEuro + STEP;
+        } else throw new IllegalArgumentException("Bod is te laag.");
+
     }
 
-    public int getMinimumBodInEuros() {
-        return minimumBodInEuros;
+    public int getMinimumBodInEuro() {
+        return minimumBodInEuro;
     }
 
-    public void setMinimumBodInEuros(int minimumBodInEuros) {
-        this.minimumBodInEuros = minimumBodInEuros;
+    public void setMinimumBodInEuro(int minimumBodInEuro) {
+        this.minimumBodInEuro = minimumBodInEuro;
     }
 }
