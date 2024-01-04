@@ -1,5 +1,6 @@
 package com.example.veilingsite.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -12,7 +13,7 @@ public class Bod {
 
     @ManyToOne
     @JoinColumn(name = "veiling_id")
-    @JsonIgnore
+    @JsonBackReference
     Veiling veiling;
 
     @ManyToOne
@@ -21,7 +22,6 @@ public class Bod {
     private Account bieder;
 
     int prijsInEuro;
-
 
     public Account getBieder() {
         return bieder;

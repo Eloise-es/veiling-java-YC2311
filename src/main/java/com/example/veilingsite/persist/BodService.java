@@ -19,10 +19,13 @@ public class BodService {
     AccountRepository ar;
 
     // CREATE
-    public Bod createBod(long veilingID, long userID, Bod bod) {
+    public Bod createBod(long veilingID, long userID, Bod bod) throws Exception {
         // find veiling and user
-        Veiling v = vr.findById(veilingID).orElseThrow(() -> new EntityNotFoundException("Veiling not found"));
-        Account a = ar.findById(userID).orElseThrow(() -> new EntityNotFoundException("Account not found"));
+        Veiling v = vr.findById(veilingID).orElseThrow(() -> new EntityNotFoundException("Veiling niet gevonden"));
+        Account a = ar.findById(userID).orElseThrow(() -> new EntityNotFoundException("Account niet gevonden"));
+        if (v.getVeilingStatus() != Veiling.VeilingStatus.OPEN) {
+            throw new Exception("Veiling is niet open.");
+        }
         try {
             // set laatste bod + minimum bod (throws exception if too low)
             v.setLaatsteBodInEuro(bod.getPrijsInEuro());
@@ -38,7 +41,7 @@ public class BodService {
             return savedBod;
         } catch(Exception e) {
             System.out.println("Exception: " + e);
-            return null;
+            throw e;
         }
 
     }
