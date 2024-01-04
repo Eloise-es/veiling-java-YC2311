@@ -14,7 +14,6 @@ public class ItemEndpoint {
     // CREATE
     @PostMapping("veilingstuk")
     public Veilingstuk maakVeilingstuk(@RequestBody Veilingstuk v) {
-        System.out.println(v.getNaam() + " veilingstuk gemaakt.");
         return is.createVeilingstuk(v);
     }
 
@@ -23,21 +22,18 @@ public class ItemEndpoint {
     // get specific item by ID
     @GetMapping("veilingstuk/{id}")
     public Veilingstuk zoekVeilingstuk(@PathVariable("id") long id) {
-        System.out.println("Veilingstuk gevonden.");
         return is.getVeilingstuk(id);
     }
 
     // get all items
     @GetMapping("veilingstukken")
     public Iterable<Veilingstuk> alleVeilingstukken() {
-        System.out.println("Alle veilingstukken");
         return is.getVeilingstukken();
     }
 
     // get all in a category
     @GetMapping("veilingstukken/{categorie}")
     public Iterable<Veilingstuk> filterVeilingstukkenByCategorie(@PathVariable("categorie") String cat) {
-        System.out.println("Veilingstukken van categorie " + cat);
         return is.filterVeilingstukkenByCategorie(cat);
     }
 
@@ -77,7 +73,6 @@ public class ItemEndpoint {
     // UPDATE
     @PutMapping("veilingstuk/{id}")
     public Veilingstuk editVeilingstuk(@PathVariable("id") long id, @RequestBody Veilingstuk v) {
-        System.out.println("Veilingstuk bijgewerkt.");
         return is.updateVeilingstuk(id, v);
     }
 
@@ -85,8 +80,6 @@ public class ItemEndpoint {
     // DELETE
     @DeleteMapping("veilingstuk/{id}")
     public Veilingstuk verwijderVeilingstuk(@PathVariable("id") long id) {
-        Veilingstuk v = is.deleteVeilingstuk(id);
-        System.out.println(v.getNaam() + " verwijderd.");
-        return v;
+        return is.deleteVeilingstuk(id);
     }
 }
