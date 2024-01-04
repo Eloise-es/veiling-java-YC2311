@@ -4,6 +4,7 @@ import com.example.veilingsite.domain.Account;
 import com.example.veilingsite.domain.Veiling;
 import com.example.veilingsite.persist.VeilingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,8 +35,13 @@ public class VeilingEndpoint {
 
     // UPDATE
     @GetMapping("veiling/{id}/winnaar")
-    public Account getWinnaar(@PathVariable("id") long veilingID) {
-        return vs.getWinningAccount(veilingID);
+    public ResponseEntity<?> getWinnaar(@PathVariable("id") long veilingID) {
+        Account a = vs.getWinningAccount(veilingID);
+        if (a != null) {
+            return ResponseEntity.ok(vs.getWinningAccount(veilingID));
+        }
+        Account geen = new Account("Geen winnaar");
+        return ResponseEntity.ok(geen);
     }
 
     // DELETE

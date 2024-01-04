@@ -28,6 +28,8 @@ public class Account {
         String plaats;
         String postcode;
 
+
+
         public List<Veilingstuk> getFavorieten() {
                 return favorieten;
         }
@@ -43,6 +45,10 @@ public class Account {
                 this.telefoon = telefoon;
                 this.plaats = plaats;
                 this.postcode = postcode;
+        }
+
+        public Account(String naam) {
+        this.naam = naam;
         }
 
         public Account() {

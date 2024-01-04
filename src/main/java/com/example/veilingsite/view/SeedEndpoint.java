@@ -43,7 +43,7 @@ public class SeedEndpoint {
         // Maak accounts aan
         accounts.add(new Account("eloise.es@outlook.com", "hello", "Eloise Salmon", "0612345678", "Amsterdam", "1012AB"));
         accounts.add(new Account("olga.kovalenko@email.com", "geheim456", "Olga Kovalenko", "0612987654", "Rotterdam", "3012BC"));
-        accounts.add(new Account("maartje@email.com", "voorbeeld123", "Maartje Smit", "0622221332", "Groningen", "9711AA"));
+        accounts.add(new Account("maartje@email.com", "maartje", "Maartje Smit", "0622221332", "Groningen", "9711AA"));
         accounts.add(new Account("hoekman@email.com", "password456", "Lucas Hoekstra", "0633245333", "Maastricht", "6211BC"));
         accounts.add(new Account("flowerpower@email.com", "p@ssw0rd789", "Fleur van der Laan", "0655889955", "Haarlem", "2011DE"));
         accounts.add(new Account("visserruub@email.com", "test5678", "Ruben Visser", "0699666899", "Arnhem", "6811FG"));
@@ -59,7 +59,7 @@ public class SeedEndpoint {
         accounts.add(new Account("lisa.meijer@email.com", "wachtwoord567", "Lisa Meijer", "0612456789", "Groningen", "9711XX"));
         accounts.add(new Account("michael.kramer@email.com", "geheim987", "Michael Kramer", "0612765432", "Eindhoven", "5612YZ"));
         accounts.add(new Account("cem.yılmaz@email.com", "123şifre", "Cem Yılmaz", "0612121212", "Den Haag", "2591AA"));
-        accounts.add(new Account("laura.pietersen@email.com", "wachtwoord246", "Laura Pietersen", "0612890432", "Amsterdam", "1071BA"));
+        accounts.add(new Account("laura.pietersen@email.com", "laura", "Laura Pietersen", "0612890432", "Amsterdam", "1071BA"));
         accounts.add(new Account("thomas.kok@email.com", "geheim321", "Thomas Kok", "0612765489", "Den Haag", "2517CD"));
         accounts.add(new Account("anne.vandijk@email.com", "123wachtwoord", "Anne van Dijk", "0612312312", "Rotterdam", "3031DE"));
         accounts.add(new Account("martijn.janssen@email.com", "wachtwoord789", "Martijn Janssen", "0612987654", "Utrecht", "3511AB"));
@@ -69,15 +69,15 @@ public class SeedEndpoint {
         System.out.println("Accounts aangemaakt");
 
         // Maak veilingstukken aan
-        veilingstukken.add(new Veilingstuk("Koffiemachine", "Huishouden", LocalDate.of(2017, 3, 15), "Een geavanceerde koffiemachine die diverse koffiespecialiteiten kan bereiden.", 5000, 20, 30, 40));
-        veilingstukken.add(new Veilingstuk("Smartphone", "Electronica", LocalDate.of(2020, 7, 10), "Een geavanceerde smartphone met uitstekende specificaties en een helder scherm.", 150, 7, 15, 0.5));
         veilingstukken.add(new Veilingstuk("Keukenmachine", "Huishouden", LocalDate.of(2018, 4, 22), "Een krachtige keukenmachine met verschillende hulpstukken om koken makkelijker te maken.", 3000, 25, 30, 40));
+        veilingstukken.add(new Veilingstuk("Smartphone", "Electronica", LocalDate.of(2020, 7, 10), "Een geavanceerde smartphone met uitstekende specificaties en een helder scherm.", 150, 7, 15, 0.5));
         veilingstukken.add(new Veilingstuk("Schilderij", "Kunst", LocalDate.of(1910, 5, 3), "Een prachtig schilderij uit de vroege 20e eeuw met levendige kleuren en een interessante compositie.", 2000, 70, 90, 4));
         veilingstukken.add(new Veilingstuk("Jurk", "Mode", LocalDate.of(1965, 9, 12), "Een elegante vintage jurk uit de jaren '60, met een uniek ontwerp en hoogwaardige materialen.", 800, 40, 30, 2));
         veilingstukken.add(new Veilingstuk("Ketting", "Sieraden", LocalDate.of(1980, 3, 25), "Een prachtige zilveren ketting met ingelegde edelstenen, een tijdloos stuk.", 500, 10, 5, 0.2));
         veilingstukken.add(new Veilingstuk("Tuinset", "Tuin", LocalDate.of(2015, 6, 7), "Een complete tuinset met tafel en stoelen, perfect voor buitenactiviteiten.", 15000, 120, 80, 70));
         veilingstukken.add(new Veilingstuk("Oldtimer auto", "Vervoer", LocalDate.of(1978, 12, 19), "Een klassieke auto uit de jaren '70, in goede staat en met een rijke historie.", 1200000, 180, 70, 50));
         veilingstukken.add(new Veilingstuk("Laptop", "Electronica", LocalDate.of(2019, 10, 5), "Een krachtige laptop geschikt voor zowel werk als entertainment.", 2000, 35, 25, 1));
+        veilingstukken.add(new Veilingstuk("Koffiemachine", "Huishouden", LocalDate.of(2017, 3, 15), "Een geavanceerde koffiemachine die diverse koffiespecialiteiten kan bereiden.", 5000, 20, 30, 40));
         veilingstukken.add(new Veilingstuk("Fiets", "Vervoer", LocalDate.of(2014, 3, 15), "Een betrouwbare stadsfiets voor dagelijks gebruik, in goede staat.", 5000, 120, 20, 70));
         veilingstukken.add(new Veilingstuk("Beeldhouwwerk", "Kunst", LocalDate.of(1950, 11, 28), "Een uniek beeldhouwwerk gemaakt door een bekende kunstenaar uit de 20e eeuw.", 3000, 40, 40, 80));
         veilingstukken.add(new Veilingstuk("Kunstwerk", "Kunst", LocalDate.of(1932, 8, 15), "Dit prachtige schilderij uit de 18e eeuw is een meesterwerk van kleur en compositie. Met levendige penseelstreken en een rijke geschiedenis is dit een unieke vondst voor kunstliefhebbers.", 500, 60, 80, 2));
@@ -102,7 +102,7 @@ public class SeedEndpoint {
         veilingstukken.add(new Veilingstuk("Olieverfschilderij", "Kunst", LocalDate.of(1955, 12, 3), "Een prachtig olieverfschilderij dat de schoonheid van de natuur vastlegt.", 2500, 80, 100, 4));
         System.out.println("Veilingstukken aangemaakt");
 
-        veilingen.add(new Veiling(LocalDateTime.now(), 10, 150));
+        veilingen.add(new Veiling(LocalDateTime.now(), 30, 150));
         veilingen.add(new Veiling(LocalDateTime.now().plusHours(3), 20, 300));
         veilingen.add(new Veiling(LocalDateTime.now().minusDays(2), 30, 80));
         veilingen.add(new Veiling(LocalDateTime.now().minusDays(3), 30, 450));
@@ -114,10 +114,10 @@ public class SeedEndpoint {
         veilingen.add(new Veiling(LocalDateTime.now().plusDays(3), 30, 350));
         veilingen.add(new Veiling(LocalDateTime.now().plusDays(4), 30, 100));
         veilingen.add(new Veiling(LocalDateTime.now().plusDays(5), 30, 280));
-        veilingen.add(new Veiling(LocalDateTime.now().plusDays(5), 30, 180));
-        veilingen.add(new Veiling(LocalDateTime.now().plusDays(6), 30, 5));
-        veilingen.add(new Veiling(LocalDateTime.now().plusDays(7), 30, 8));
-        veilingen.add(new Veiling(LocalDateTime.now().plusDays(8), 30, 7));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(5), 30, 180));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(20), 30, 5));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(30), 30, 8));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(10), 30, 7));
         veilingen.add(new Veiling(LocalDateTime.now().plusDays(9), 30, 150));
         veilingen.add(new Veiling(LocalDateTime.now().plusDays(15), 30, 300));
         veilingen.add(new Veiling(LocalDateTime.now().plusDays(30), 30, 80));
@@ -144,7 +144,6 @@ public class SeedEndpoint {
 
         fotos.add(fs.saveFoto("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"));
         fotos.add(fs.saveFoto("https://res.cloudinary.com/dzqkr91yz/image/upload/v1702938325/veilingsite/wpbuvz1nffwxhxkavwyl.jpg"));
-        fotos.add(fs.saveFoto("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"));
         fotos.add(fs.saveFoto("https://res.cloudinary.com/dzqkr91yz/image/upload/v1702979279/veilingsite/rhrcl32h668yxhfi3mgc.jpg"));
         fotos.add(fs.saveFoto("https://res.cloudinary.com/dzqkr91yz/image/upload/v1702938640/veilingsite/uhxdcedwcifpomtozckf.avif"));
         fotos.add(fs.saveFoto("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"));
@@ -162,18 +161,18 @@ public class SeedEndpoint {
         }
         System.out.println("Accounts opgeslagen");
 
-        abs.createVeilingstuk(veilingstukken.get(0), 1);
-        int i = 1;
-        for (Veilingstuk veilingstuk : veilingstukken) {
+        Veilingstuk mijnItem = abs.createVeilingstuk(veilingstukken.get(0), 1, 1);
+        vs.createVeiling(mijnItem.getId(), veilingen.get(0));
+
+        for (int i = 1; i < veilingstukken.size(); i++) {
             Veilingstuk item;
-            if (i < 11) {
-                item = abs.createVeilingstuk(veilingstuk, (long) (Math.random()*25)+1, i);
+            if (i < 10) {
+                item = abs.createVeilingstuk(veilingstukken.get(i), (long) (Math.random()*25)+1, i+1);
             } else {
-                item = abs.createVeilingstuk(veilingstuk, (long) (Math.random()*25)+1);
+                item = abs.createVeilingstuk(veilingstukken.get(i), (long) (Math.random()*25)+1);
             }
             vs.createVeiling(item.getId(), veilingen.get(i));
             System.out.println("Item opgeslagen. i =" + i);
-            i++;
         }
        return ResponseEntity.ok("Database seeded.");
     }

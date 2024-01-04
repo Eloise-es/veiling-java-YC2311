@@ -39,7 +39,9 @@ public class VeilingService {
 
     // READ
     public Veiling getVeilingByID(long veilingID) {
-        return vr.findById(veilingID).get();
+        Veiling veiling = vr.findById(veilingID).get();
+        updateVeilingStatus(veiling.getId());
+        return veiling;
     }
 
     public Iterable<Veiling> getVeilingen() {
@@ -62,6 +64,7 @@ public class VeilingService {
         LocalDateTime now = LocalDateTime.now();
         Veiling veiling = vr.findById(veilingID).get();
         LocalDateTime endDatum = veiling.getStartDatum().plusMinutes(veiling.getDuratieInMinuten());
+        veiling.setEindDatum(endDatum);
 
         if (now.isBefore(veiling.getStartDatum())) {
             veiling.setVeilingStatus(SCHEDULED);
