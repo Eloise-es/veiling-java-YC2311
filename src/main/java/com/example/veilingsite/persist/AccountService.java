@@ -11,6 +11,8 @@ public class AccountService {
     @Autowired
     AccountRepository ar;
 
+
+
     // CREATE
     public Account createAccount(Account account) {
         ar.save(account);
@@ -25,6 +27,10 @@ public class AccountService {
         Optional<Account> account = ar.findById(id);
         return account.orElse(null);
     }
+    public Account getAccountByEmail(String email) {
+        return ar.findByEmail(email).get();
+    }
+
 
     // UPDATE
     public Account updateAccount(long id, Account updatedAccount) {

@@ -41,7 +41,7 @@ public class SeedEndpoint {
         List<Foto> fotos = new ArrayList<>();
 
         // Maak accounts aan
-        accounts.add(new Account("piotr.nowak@email.com", "hasło123", "Piotr Nowak", "0612345678", "Amsterdam", "1012AB"));
+        accounts.add(new Account("eloise.es@outlook.com", "hello", "Eloise Salmon", "0612345678", "Amsterdam", "1012AB"));
         accounts.add(new Account("olga.kovalenko@email.com", "geheim456", "Olga Kovalenko", "0612987654", "Rotterdam", "3012BC"));
         accounts.add(new Account("maartje@email.com", "voorbeeld123", "Maartje Smit", "0622221332", "Groningen", "9711AA"));
         accounts.add(new Account("hoekman@email.com", "password456", "Lucas Hoekstra", "0633245333", "Maastricht", "6211BC"));
@@ -69,6 +69,7 @@ public class SeedEndpoint {
         System.out.println("Accounts aangemaakt");
 
         // Maak veilingstukken aan
+        veilingstukken.add(new Veilingstuk("Koffiemachine", "Huishouden", LocalDate.of(2017, 3, 15), "Een geavanceerde koffiemachine die diverse koffiespecialiteiten kan bereiden.", 5000, 20, 30, 40));
         veilingstukken.add(new Veilingstuk("Smartphone", "Electronica", LocalDate.of(2020, 7, 10), "Een geavanceerde smartphone met uitstekende specificaties en een helder scherm.", 150, 7, 15, 0.5));
         veilingstukken.add(new Veilingstuk("Keukenmachine", "Huishouden", LocalDate.of(2018, 4, 22), "Een krachtige keukenmachine met verschillende hulpstukken om koken makkelijker te maken.", 3000, 25, 30, 40));
         veilingstukken.add(new Veilingstuk("Schilderij", "Kunst", LocalDate.of(1910, 5, 3), "Een prachtig schilderij uit de vroege 20e eeuw met levendige kleuren en een interessante compositie.", 2000, 70, 90, 4));
@@ -77,7 +78,7 @@ public class SeedEndpoint {
         veilingstukken.add(new Veilingstuk("Tuinset", "Tuin", LocalDate.of(2015, 6, 7), "Een complete tuinset met tafel en stoelen, perfect voor buitenactiviteiten.", 15000, 120, 80, 70));
         veilingstukken.add(new Veilingstuk("Oldtimer auto", "Vervoer", LocalDate.of(1978, 12, 19), "Een klassieke auto uit de jaren '70, in goede staat en met een rijke historie.", 1200000, 180, 70, 50));
         veilingstukken.add(new Veilingstuk("Laptop", "Electronica", LocalDate.of(2019, 10, 5), "Een krachtige laptop geschikt voor zowel werk als entertainment.", 2000, 35, 25, 1));
-        veilingstukken.add(new Veilingstuk("Koffiemachine", "Huishouden", LocalDate.of(2017, 3, 15), "Een geavanceerde koffiemachine die diverse koffiespecialiteiten kan bereiden.", 5000, 20, 30, 40));
+        veilingstukken.add(new Veilingstuk("Fiets", "Vervoer", LocalDate.of(2014, 3, 15), "Een betrouwbare stadsfiets voor dagelijks gebruik, in goede staat.", 5000, 120, 20, 70));
         veilingstukken.add(new Veilingstuk("Beeldhouwwerk", "Kunst", LocalDate.of(1950, 11, 28), "Een uniek beeldhouwwerk gemaakt door een bekende kunstenaar uit de 20e eeuw.", 3000, 40, 40, 80));
         veilingstukken.add(new Veilingstuk("Kunstwerk", "Kunst", LocalDate.of(1932, 8, 15), "Dit prachtige schilderij uit de 18e eeuw is een meesterwerk van kleur en compositie. Met levendige penseelstreken en een rijke geschiedenis is dit een unieke vondst voor kunstliefhebbers.", 500, 60, 80, 2));
         veilingstukken.add(new Veilingstuk("Robotstofzuiger", "Huishouden", LocalDate.of(2022, 2, 8), "Deze robotstofzuiger, beter bekend als 'Stoffer de Robo', is jouw loyale metgezel in de strijd tegen stof en vuil. Hij glijdt soepel over vloeren, brengt een futuristisch tintje aan je huishouden én heeft een hekel aan stofbollen.", 5000, 30, 30, 8));
@@ -96,51 +97,51 @@ public class SeedEndpoint {
         veilingstukken.add(new Veilingstuk("Designerjas", "Mode", LocalDate.of(2005, 4, 23), "Een exclusieve designerjas met een tijdloos ontwerp en hoogwaardige materialen.", 1200, 45, 30, 5));
         veilingstukken.add(new Veilingstuk("Zilveren Armband", "Sieraden", LocalDate.of(1990, 9, 18), "Een prachtige zilveren armband met ingewikkelde details, een elegante toevoeging aan elke outfit.", 300, 8, 4, 0.2));
         veilingstukken.add(new Veilingstuk("Barbecuegrill", "Tuin", LocalDate.of(2020, 6, 30), "Een robuuste barbecuegrill perfect voor zomerse buitenfeestjes.", 8000, 100, 60, 80));
-        veilingstukken.add(new Veilingstuk("Fiets", "Vervoer", LocalDate.of(2014, 3, 15), "Een betrouwbare stadsfiets voor dagelijks gebruik, in goede staat.", 5000, 120, 20, 70));
         veilingstukken.add(new Veilingstuk("Draadloze Koptelefoon", "Electronica", LocalDate.of(2018, 9, 8), "Een hoogwaardige draadloze koptelefoon met uitstekende geluidskwaliteit.", 300, 10, 15, 5));
         veilingstukken.add(new Veilingstuk("Stofzuiger", "Huishouden", LocalDate.of(2016, 7, 22), "Een krachtige stofzuiger met verschillende hulpstukken voor grondige reiniging.", 4000, 30, 35, 10));
         veilingstukken.add(new Veilingstuk("Olieverfschilderij", "Kunst", LocalDate.of(1955, 12, 3), "Een prachtig olieverfschilderij dat de schoonheid van de natuur vastlegt.", 2500, 80, 100, 4));
         System.out.println("Veilingstukken aangemaakt");
 
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 14, 9, 45, 0), 1800, 150));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 17, 15, 0, 0), 2000, 300));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 19, 11, 30, 0), 1800, 80));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 22, 18, 15, 0), 2500, 450));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 25, 10, 0, 0), 1800, 200));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 2, 26, 12, 45, 0), 3600, 3));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 2, 29, 20, 0, 0), 2000, 4));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 3, 16, 30, 0), 1800, 2));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 28, 12, 45, 0), 3600, 120));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 31, 20, 0, 0), 2000, 350));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 1, 3, 16, 30, 0), 1800, 100));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 1, 6, 14, 0, 0), 2800, 280));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 1, 9, 9, 15, 0), 1800, 180));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 2, 11, 17, 45, 0), 1800, 5));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 2, 14, 13, 0, 0), 2000, 8));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 2, 17, 10, 30, 0), 2500, 7));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 14, 9, 45, 0), 1800, 150));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 17, 15, 0, 0), 2000, 300));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 19, 11, 30, 0), 1800, 80));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 22, 18, 15, 0), 2500, 450));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 25, 10, 0, 0), 1800, 200));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 28, 12, 45, 0), 3600, 120));
-        veilingen.add(new Veiling(LocalDateTime.of(2023, 12, 31, 20, 0, 0), 2000, 350));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 1, 9, 9, 15, 0), 1800, 180));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 2, 20, 19, 15, 0), 1800, 6));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 2, 23, 11, 0, 0), 1800, 9));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 12, 17, 45, 0), 1800, 15));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 15, 13, 0, 0), 2000, 8));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 18, 10, 30, 0), 2500, 7));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 21, 19, 15, 0), 1800, 6));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 24, 11, 0, 0), 1800, 9));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 27, 12, 45, 0), 3600, 3));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 30, 20, 0, 0), 2000, 4));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 4, 2, 16, 30, 0), 1800, 2));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 4, 5, 14, 0, 0), 2800, 1));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 4, 8, 9, 15, 0), 1800, 7));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 6, 14, 0, 0), 2800, 1));
-        veilingen.add(new Veiling(LocalDateTime.of(2024, 3, 9, 9, 15, 0), 1800, 7));
+        veilingen.add(new Veiling(LocalDateTime.now(), 1800, 150));
+        veilingen.add(new Veiling(LocalDateTime.now().plusHours(3), 2000, 300));
+        veilingen.add(new Veiling(LocalDateTime.now().minusDays(2), 1800, 80));
+        veilingen.add(new Veiling(LocalDateTime.now().minusDays(3), 2500, 450));
+        veilingen.add(new Veiling(LocalDateTime.now().minusDays(4), 1800, 200));
+        veilingen.add(new Veiling(LocalDateTime.now().minusDays(5), 3600, 3));
+        veilingen.add(new Veiling(LocalDateTime.now().minusDays(1), 2000, 4));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(1), 1800, 2));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(2), 3600, 120));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(3), 2000, 350));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(4), 1800, 100));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(5), 2800, 280));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(5), 1800, 180));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(6), 1800, 5));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(7), 2000, 8));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(8), 2500, 7));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(9), 1800, 150));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(15), 2000, 300));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(30), 1800, 80));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(35), 2500, 450));
+        veilingen.add(new Veiling(LocalDateTime.now().plusHours(1), 1800, 200));
+        veilingen.add(new Veiling(LocalDateTime.now().plusHours(2), 3600, 120));
+        veilingen.add(new Veiling(LocalDateTime.now().plusHours(6), 2000, 350));
+        veilingen.add(new Veiling(LocalDateTime.now().plusHours(15), 1800, 180));
+        veilingen.add(new Veiling(LocalDateTime.now().plusHours(7), 1800, 6));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(1), 1800, 9));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(15), 1800, 15));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(60), 2000, 8));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(1000), 2500, 7));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMinutes(40), 1800, 6));
+        veilingen.add(new Veiling(LocalDateTime.now(), 1800, 9));
+        veilingen.add(new Veiling(LocalDateTime.now().plusDays(1), 3600, 3));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMonths(1).plusMinutes(1), 2000, 4));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMonths(2).plusMinutes(15), 1800, 2));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMonths(3).plusMinutes(300), 2800, 1));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMonths(5).plusMinutes(15), 1800, 7));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMonths(6).plusMinutes(50), 2800, 1));
+        veilingen.add(new Veiling(LocalDateTime.now().plusMonths(7).plusMinutes(4000), 1800, 7));
         System.out.println("Veilingen aangemaakt");
+
 
         fotos.add(fs.saveFoto("https://res.cloudinary.com/dzqkr91yz/image/upload/v1702938325/veilingsite/wpbuvz1nffwxhxkavwyl.jpg"));
         fotos.add(fs.saveFoto("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"));
@@ -151,7 +152,7 @@ public class SeedEndpoint {
         fotos.add(fs.saveFoto("https://res.cloudinary.com/dzqkr91yz/image/upload/v1702977467/veilingsite/lonvfyapbalae4wm1mnh.jpg"));
         fotos.add(fs.saveFoto("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"));
         fotos.add(fs.saveFoto("https://res.cloudinary.com/dzqkr91yz/image/upload/v1702938035/veilingsite/sfqh0ypbacxvq0dpe01e.jpg"));
-        fotos.add(fs.saveFoto("https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"));
+        fotos.add(fs.saveFoto("https://res.cloudinary.com/dzqkr91yz/image/upload/v1702978151/veilingsite/vw0ai7tavfnvmjokssgz.jpg"));
         System.out.println("Fotos aangemaakt");
 
 
@@ -161,11 +162,12 @@ public class SeedEndpoint {
         }
         System.out.println("Accounts opgeslagen");
 
-        int i = 0;
+        abs.createVeilingstuk(veilingstukken.get(0), 1);
+        int i = 1;
         for (Veilingstuk veilingstuk : veilingstukken) {
             Veilingstuk item;
-            if (i < 10) {
-                item = abs.createVeilingstuk(veilingstuk, (long) (Math.random()*25)+1, i+1);
+            if (i < 11) {
+                item = abs.createVeilingstuk(veilingstuk, (long) (Math.random()*25)+1, i);
             } else {
                 item = abs.createVeilingstuk(veilingstuk, (long) (Math.random()*25)+1);
             }
