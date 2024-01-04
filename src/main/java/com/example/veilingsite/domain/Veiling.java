@@ -20,11 +20,12 @@ public class Veiling {
     private Veilingstuk veilingstuk;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiling")
+    @JsonManagedReference
     private List<Bod> biedingen = new ArrayList<Bod>();
 
     final static int STEP = 2;
     LocalDateTime startDatum;
-    int duratieInSeconden;
+    int duratieInMinuten;
     public enum VeilingStatus {
         SCHEDULED,
         OPEN,
@@ -37,9 +38,9 @@ public class Veiling {
     @JsonProperty("veilingstuk_id")
     public Long getVeilingstukId() { return veilingstuk != null ? veilingstuk.getId() : null;  }
 
-    public Veiling(LocalDateTime startDatum, int duratieInSeconden, int openingsBodInEuro) {
+    public Veiling(LocalDateTime startDatum, int duratieInMinuten, int openingsBodInEuro) {
         this.startDatum = startDatum;
-        this.duratieInSeconden = duratieInSeconden;
+        this.duratieInMinuten = duratieInMinuten;
         this.openingsBodInEuro = openingsBodInEuro;
         this.minimumBodInEuro = openingsBodInEuro + STEP;
     }
@@ -91,12 +92,12 @@ public class Veiling {
         this.startDatum = startDatum;
     }
 
-    public int getDuratieInSeconden() {
-        return duratieInSeconden;
+    public int getDuratieInMinuten() {
+        return duratieInMinuten;
     }
 
-    public void setDuratieInSeconden(int duratieInSeconden) {
-        this.duratieInSeconden = duratieInSeconden;
+    public void setDuratieInMinuten(int duratieInMinuten) {
+        this.duratieInMinuten = duratieInMinuten;
     }
 
     public int getOpeningsBodInEuro() {
