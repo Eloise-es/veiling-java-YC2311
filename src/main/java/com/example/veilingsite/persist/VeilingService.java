@@ -1,6 +1,7 @@
 package com.example.veilingsite.persist;
 
 
+import com.example.veilingsite.domain.Account;
 import com.example.veilingsite.domain.Bod;
 import com.example.veilingsite.domain.Veiling;
 import com.example.veilingsite.domain.Veilingstuk;
@@ -45,6 +46,16 @@ public class VeilingService {
         return vr.findAllByOrderByStartDatum();
     }
 
+    public Account getWinningAccount(long veilingID) {
+        Veiling veiling = vr.findById(veilingID).orElse(null);
+        if (veiling == null || veiling.getVeilingStatus() != Veiling.VeilingStatus.CLOSED) {
+            // Veiling not found or not closed yet
+            return null;
+        }
+
+        Bod winningBid = br.findTopByVeilingOrderByPrijsInEuroDesc(veiling);
+        return winningBid != null ? winningBid.getBieder() : null;
+    }
 
     // UPDATE
     public void updateVeilingStatus(long veilingID) {
@@ -60,6 +71,11 @@ public class VeilingService {
             veiling.setVeilingStatus(OPEN);
         }
         vr.save(veiling);
+    }
+
+    public void updateAllVeilingStatus() {
+        Iterable<Veiling> veilingen = vr.findAll();
+        veilingen.forEach(veiling -> updateVeilingStatus(veiling.getId()));
     }
 
     // DELETE

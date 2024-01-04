@@ -19,7 +19,6 @@ public class BodEndpoint {
     // CREATE
     @PostMapping("veiling/{veilingID}/account/{accountID}/bod")
     public ResponseEntity<?> maakBod(@PathVariable("veilingID") long veilingID, @PathVariable("accountID") long accountID, @RequestBody Bod bod) {
-        System.out.println("bod aan het maken: €" + bod.getPrijsInEuro());
         vs.updateVeilingStatus(veilingID);
         try {
             return ResponseEntity.ok(bs.createBod(veilingID, accountID, bod));
