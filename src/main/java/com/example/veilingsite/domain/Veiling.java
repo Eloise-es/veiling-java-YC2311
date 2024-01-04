@@ -26,6 +26,7 @@ public class Veiling {
     final static int STEP = 2;
     LocalDateTime startDatum;
     int duratieInMinuten;
+    LocalDateTime eindDatum;
     public enum VeilingStatus {
         SCHEDULED,
         OPEN,
@@ -41,6 +42,7 @@ public class Veiling {
     public Veiling(LocalDateTime startDatum, int duratieInMinuten, int openingsBodInEuro) {
         this.startDatum = startDatum;
         this.duratieInMinuten = duratieInMinuten;
+        this.eindDatum = startDatum.plusMinutes(duratieInMinuten);
         this.openingsBodInEuro = openingsBodInEuro;
         this.minimumBodInEuro = openingsBodInEuro + STEP;
     }
@@ -127,5 +129,13 @@ public class Veiling {
 
     public void setMinimumBodInEuro(int minimumBodInEuro) {
         this.minimumBodInEuro = minimumBodInEuro;
+    }
+
+    public LocalDateTime getEindDatum() {
+        return eindDatum;
+    }
+
+    public void setEindDatum(LocalDateTime eindDatum) {
+        this.eindDatum = eindDatum;
     }
 }
